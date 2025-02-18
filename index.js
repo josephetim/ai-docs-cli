@@ -1,10 +1,10 @@
 #!/usr/bin/env node
 
-import { program } from "commander";
-import { analyzeDirectory } from "./src/analyze.js";
-import { checkInconsistencies } from "./src/check.js";
-import { analyzeFolderContent } from "./src/guidelines.js";
-import { suggestImprovements } from "./src/improve.js";
+const { program } = require("commander");
+const { analyzeDirectory } = require("./src/analyze.js");
+const { checkInconsistencies } = require("./src/check.js");
+const { analyzeFolderContent } = require("./src/guidelines.js");
+const { suggestImprovements } = require("./src/improve.js");
 
 program 
     .version("1.0.0")
