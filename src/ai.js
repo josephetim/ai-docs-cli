@@ -1,17 +1,20 @@
-import { Configuration, OpenAIApi } from 'openai';
+import OpenAI from "openai";  // ✅ Use OpenAI instead of Configuration, OpenAIApi
 import dotenv from "dotenv";
+
 dotenv.config();
 
-const openai = new OpenAIApi(new Configuration({ apiKey: process.env.OPENAI_API_KEY}));
+const openai = new OpenAI({
+    apiKey: process.env.OPENAI_API_KEY, // ✅ Pass API key directly
+});
 
-export async function generateAIAnalysis(summary){
-    const prompt =  `Analyze the following folder structure and suggest improvements:\n${JSON.stringify(summary, null, 2)}`;
-    const response =await openai.createCompletion({
+export async function generateAIAnalysis(summary) {
+    const prompt = `Analyze the following folder structure and suggest improvements:\n${JSON.stringify(summary, null, 2)}`;
+    
+    const response = await openai.chat.completions.create({
         model: "gpt-4",
-        prompt,
+        messages: [{ role: "system", content: prompt }],
         max_tokens: 300,
+    });
 
-    })
-
-    return response.data.choices[0].text.trim
+    return response.choices[0]?.message?.content.trim(); // ✅ Fix .trim() function usage
 }
