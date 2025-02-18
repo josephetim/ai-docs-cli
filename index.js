@@ -7,7 +7,7 @@ import { analyzeFolderContent } from "./src/guidelines.js";
 import { suggestImprovements } from "./src/improve.js";
 
 program 
-    .version("1.0.0")
+    .version("1.0.5")
     .description("AI-Integrated Documentation CLI")
 
 program
