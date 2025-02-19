@@ -11,7 +11,7 @@ export async function generateAIAnalysis(summary) {
     const prompt = `Analyze the following folder structure and suggest improvements:\n${JSON.stringify(summary, null, 2)}`;
     
     const response = await openai.chat.completions.create({
-        model: "gpt-4",
+        model: "gpt-4o",
         messages: [{ role: "system", content: prompt }],
         max_tokens: 300,
     });
